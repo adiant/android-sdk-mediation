@@ -1,6 +1,6 @@
 # Mediator SDK integration
 
-This repository includes classes that should be used to display Adblade's ads using another SDK. If you wish to use Adblade's SDK to render Adblade's ads, then please read our [Getting started](https://github.com/adiant/android-sdk-example/wiki/Getting-started) guide.
+This repository includes classes that should be used to display Adblade's ads using a third-party SDK. If you wish to use Adblade's SDK to render Adblade's ads, then please read our [Getting started](https://github.com/adiant/android-sdk-example/wiki/Getting-started) guide.
 
 ## MoPub
 
