@@ -83,7 +83,7 @@ You can integrate both of the ad types or a single ad type.
 
 On the Admob web interface, find your app on Monetize tab. Click on the "ad sources" link in the Ad Units table. Click on the **New Network** button, then click the **Custom Event** button. You will be prompted for information about the custom event. Copy the value from the table below into the **Class Name** field for the type of Adblade ads you want to display.
 
-Ad Type      | Custom Event Class
+Ad Type      | Class Name
 ------------ | ------------------
 Banner       | com.adiant.android.ads.admob.AdbladeBanner
 Interstitial | com.adiant.android.ads.admob.AdbladeInterstitial
