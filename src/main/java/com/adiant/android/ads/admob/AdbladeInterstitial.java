@@ -54,7 +54,7 @@ public class AdbladeInterstitial implements CustomEventInterstitial {
     private InterstitialAd interstitial;
 
     @Override
-    public void requestInterstitialAd(CustomEventInterstitialListener listener, Activity activity, String adUnitId, String s, MediationAdRequest mediationAdRequest, Object o) {
+    public void requestInterstitialAd(CustomEventInterstitialListener listener, Activity activity, String label, String adUnitId, MediationAdRequest mediationAdRequest, Object o) {
         if (adUnitId == null) {
             listener.onFailedToReceiveAd();
             return;
