@@ -14,6 +14,8 @@ If you wish to integrate **Banner** or **Interstitial** ads, create a **com.mopu
 
 If you wish to integrate **Native** ads, create a **com.mopub.nativeads** package in your project. Then, copy to this package [AdbladeNative.java](https://github.com/adiant/android-sdk-mediation/blob/master/src/main/java/com/mopub/nativeads/AdbladeNative.java).
 
+**For MoPub 3.x**: You should copy [AdbladeNative-v3.java](https://github.com/adiant/android-sdk-mediation/blob/master/src/main/java/com/mopub/nativeads/AdbladeNative-v3.java), and rename the file to `AdbladeNative.java`.
+
 You can integrate all three types of ads, a combination of them, or a single ad type.
 
 ### Enable custom events on the MoPub web interface
@@ -60,7 +62,7 @@ ViewBinder binder = new ViewBinder.Builder(R.layout.list_item_native_ad)
     .titleId(R.id.textViewTitle)
     .textId(R.id.textViewDescription)
     .addExtra(com.mopub.nativeads.AdbladeNative.EXTRA_DISPLAY_NAME, R.id.textViewDisplayName)
-    .daaIconImageId(R.id.native_ad_daa_icon_image)
+    .privacyInformationIconImageId(R.id.native_ad_daa_icon_image)
     .build();
 ```
 

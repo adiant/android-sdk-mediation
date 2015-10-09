@@ -1,7 +1,5 @@
 package com.mopub.nativeads;
 
-import static com.mopub.nativeads.NativeImageHelper.preCacheImages;
-
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -10,8 +8,6 @@ import com.adiant.android.ads.NewsbulletFactory;
 import com.adiant.android.ads.core.ErrorReason;
 import com.adiant.android.ads.core.Newsbullet;
 import com.adiant.android.ads.util.AdListener;
-
-import com.mopub.nativeads.NativeImageHelper.ImageListener;
 
 import java.util.Collections;
 import java.util.Map;
@@ -26,10 +22,10 @@ public class AdbladeNative extends CustomEventNative {
     private static final String CONTAINER_ID_KEY = "container_id";
 
     private static class AdbladeAdListener extends AdListener {
-        private final AdbladeStaticNativeAd ad;
+        private final AdbladeForwardingNativeAd ad;
         private final CustomEventNativeListener mopubListener;
 
-        public AdbladeAdListener(AdbladeStaticNativeAd ad, CustomEventNativeListener mopubListener) {
+        public AdbladeAdListener(AdbladeForwardingNativeAd ad, CustomEventNativeListener mopubListener) {
             this.ad = ad;
             this.mopubListener = mopubListener;
         }
@@ -39,7 +35,7 @@ public class AdbladeNative extends CustomEventNative {
             Log.d(LOG_TAG, "Adblade native ad loaded successfully. Caching images...");
             Newsbullet nb = (Newsbullet) result;
             ad.adLoaded(nb);
-            preCacheImages(ad.getContext(), Collections.singletonList(nb.getBannerUrl()), new ImageListener() {
+            BaseForwardingNativeAd.preCacheImages(ad.getContext(), Collections.singletonList(nb.getBannerUrl()), new ImageListener() {
                 @Override
                 public void onImagesCached() {
                     Log.d(LOG_TAG, "Adblade native ad images cached successfully.");
@@ -67,10 +63,10 @@ public class AdbladeNative extends CustomEventNative {
         }
     }
 
-    private static class AdbladeStaticNativeAd extends StaticNativeAd {
+    private static class AdbladeForwardingNativeAd extends BaseForwardingNativeAd {
         private final Context context;
 
-        public AdbladeStaticNativeAd(Context context) {
+        public AdbladeForwardingNativeAd(Context context) {
             this.context = context;
         }
 
@@ -106,6 +102,6 @@ public class AdbladeNative extends CustomEventNative {
         }
 
         new NewsbulletFactory(containerId, context).loadAd(new AdbladeAdListener(
-                new AdbladeStaticNativeAd(context), mopubListener));
+                new AdbladeForwardingNativeAd(context), mopubListener));
     }
 }
